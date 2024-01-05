@@ -9,4 +9,3 @@ Create table Users(
 );
 
 Alter table users add constraint users_PK primary key(ID);
-ALTER TABle users add constraint users_UK UNIQUE (EMAIL);

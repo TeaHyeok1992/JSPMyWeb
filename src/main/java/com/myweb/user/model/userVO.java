@@ -24,6 +24,14 @@ public class userVO {
 		this.gender = gender;
 		this.regdate = regdate;
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "userVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", address=" + address
+				+ ", gender=" + gender + ", regdate=" + regdate + "]";
+	}
 	public String getId() {
 		return id;
 	}
