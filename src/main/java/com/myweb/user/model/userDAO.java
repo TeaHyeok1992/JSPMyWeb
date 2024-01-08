@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.sql.SQLException;
 
 import com.myweb.util.JdbcUtil;
 
@@ -185,6 +185,27 @@ public class userDAO {
 		}
 		
 		
+		
+		return result;
+	}
+	
+	public int delete(userVO vo) {
+		int result =0;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		String sql="delete FROM users where id=?";
+		
+		try {
+			conn=DriverManager.getConnection(url,uid,upw);
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,vo.getId());
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			JdbcUtil.close(conn, pstmt, null);
+		}
 		
 		return result;
 	}

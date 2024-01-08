@@ -67,6 +67,18 @@ public class UserServiceImpl implements UserService{
 		
 		return result;
 	}
+
+	
+	public int delete(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("user_id");
+		
+		userVO vo=dao.getUser(id);
+		
+		int result=dao.delete(vo);
+		session.invalidate();
+		return result;
+	}
 	
 	
 	

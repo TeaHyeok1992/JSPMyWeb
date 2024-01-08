@@ -102,6 +102,23 @@ public class User_Controller extends HttpServlet {
 			}else {
 				response.sendRedirect("mypage.user");
 			}
+		}else if(path.equals("/user/delete.user")){
+			request.getRequestDispatcher("user_delete.jsp").forward(request, response);
+		}else if(path.equals("/user/deleteForm.user")) {
+			
+			int result=service.delete(request, response);
+			if(result==1) {
+				response.setCharacterEncoding("utf-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('탈퇴가 완료되었습니다.');");
+				out.println("location.herf='/JSPMyWeb';");
+				out.println("</script>");
+			}else {
+				request.getRequestDispatcher("user_delete.jsp").forward(request, response);
+				System.out.println(result);
+			}
+			
 		}
 		
 		
