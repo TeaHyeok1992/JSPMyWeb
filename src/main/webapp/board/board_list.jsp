@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <%@ include file="../include/Header.jsp" %>
 	
 
@@ -12,20 +13,22 @@
 				<tr>
 					<th>글 번호</th>
 					<th>작성자</th>
-					<th>제목</th>
-					<th>날짜</th>
 					<th>조회수</th>
+					<th>날짜</th>
+					<th>제목</th>
 				</tr>
 			</thead>
 
 			<tbody>
+			<c:forEach var="a" items="${requestScope.list}">
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>${a.bno}</td>
+					<td>${a.writer}</td>
+					<td>${a.hit}</td>
+					<td><fmt:formatDate value="${a.regdate}" pattern="yyyy년 MM월 dd일 HH시 mm분 ss초"/> </td>
+					<td><a href="content.board?bno=${a.bno}">${a.title}</a></td>
 				</tr>
+			</c:forEach>				
 			</tbody>
 			
 			<tbody>
